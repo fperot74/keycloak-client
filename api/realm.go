@@ -6,11 +6,11 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	realmRootPath               = "/auth/admin/realms"
+var (
+	realmRootPath               = GetKcRootPath() + "/admin/realms"
 	realmPath                   = realmRootPath + "/:realm"
 	realmCredentialRegistrators = realmPath + "/credential-registrators"
-	exportRealmPath             = "/auth/realms/:realm/export/realm"
+	exportRealmPath             = GetKcRootPath() + "/realms/:realm/export/realm"
 )
 
 // GetRealms get the top level represention of all the realms. Nested information like users are

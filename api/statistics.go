@@ -5,8 +5,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	statisticsPath        = "/auth/realms/master/api/admin/realms/:realm/statistics"
+var (
+	statisticsPath        = GetKcRootPath() + "/realms/master/api/admin/realms/:realm/statistics"
 	statisticsUsers       = statisticsPath + "/users"
 	statisticsCredentials = statisticsPath + "/credentials"
 )

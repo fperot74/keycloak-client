@@ -7,10 +7,10 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	rolePath       = "/auth/admin/realms/:realm/roles"
-	roleByIDPath   = "/auth/admin/realms/:realm/roles-by-id/:id"
-	clientRolePath = "/auth/admin/realms/:realm/clients/:id/roles"
+var (
+	rolePath       = GetKcRootPath() + "/admin/realms/:realm/roles"
+	roleByIDPath   = GetKcRootPath() + "/admin/realms/:realm/roles-by-id/:id"
+	clientRolePath = GetKcRootPath() + "/admin/realms/:realm/clients/:id/roles"
 )
 
 // GetClientRoles gets all roles for the realm or client

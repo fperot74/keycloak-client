@@ -6,8 +6,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	groupsPath                          = "/auth/admin/realms/:realm/groups"
+var (
+	groupsPath                          = GetKcRootPath() + "/admin/realms/:realm/groups"
 	groupByIDPath                       = groupsPath + "/:id"
 	groupClientRoleMappingPath          = groupByIDPath + "/role-mappings/clients/:clientId"
 	availableGroupClientRoleMappingPath = groupClientRoleMappingPath + "/available"

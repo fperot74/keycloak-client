@@ -5,8 +5,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	clientRegistrationPolicyPath = "/auth/admin/realms/:realm/client-registration-policy/providers"
+var (
+	clientRegistrationPolicyPath = GetKcRootPath() + "/admin/realms/:realm/client-registration-policy/providers"
 )
 
 // GetClientRegistrationPolicy is the base path to retrieve providers with the configProperties properly filled.

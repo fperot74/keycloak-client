@@ -76,7 +76,7 @@ func New(config keycloak.Config) (*Client, error) {
 func (c *Client) GetToken(realm string, username string, password string) (string, error) {
 	var req *gentleman.Request
 	{
-		var authPath = fmt.Sprintf("/auth/realms/%s/protocol/openid-connect/token", realm)
+		var authPath = fmt.Sprintf("%s/realms/%s/protocol/openid-connect/token", kcRootPath, realm)
 		req = c.httpClient.Post()
 		req = req.SetHeader("Content-Type", "application/x-www-form-urlencoded")
 		req = req.Path(authPath)

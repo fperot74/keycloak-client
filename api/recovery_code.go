@@ -6,9 +6,9 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	recoveryCodePath   = "/auth/realms/:realm/recovery-code"
-	activationCodePath = "/auth/realms/:realm/activation-code"
+var (
+	recoveryCodePath   = GetKcRootPath() + "/realms/:realm/recovery-code"
+	activationCodePath = GetKcRootPath() + "/realms/:realm/activation-code"
 )
 
 // CreateRecoveryCode creates a new recovery code authenticator and returns the code.

@@ -8,8 +8,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	clientsPath       = "/auth/admin/realms/:realm/clients"
+var (
+	clientsPath       = GetKcRootPath() + "/admin/realms/:realm/clients"
 	clientIDPath      = clientsPath + "/:id"
 	clientSecret      = clientsPath + "/client-secret"
 	clientMappersPath = clientIDPath + "/evaluate-scopes/protocol-mappers"

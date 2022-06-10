@@ -6,9 +6,9 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	clientRoleMappingPath = "/auth/admin/realms/:realm/users/:id/role-mappings/clients/:client"
-	realmRoleMappingPath  = "/auth/admin/realms/:realm/users/:id/role-mappings/realm"
+var (
+	clientRoleMappingPath = GetKcRootPath() + "/admin/realms/:realm/users/:id/role-mappings/clients/:client"
+	realmRoleMappingPath  = GetKcRootPath() + "/admin/realms/:realm/users/:id/role-mappings/realm"
 )
 
 // AddClientRolesToUserRoleMapping add client-level roles to the user role mapping.

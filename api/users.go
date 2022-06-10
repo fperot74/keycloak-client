@@ -2,6 +2,8 @@ package api
 
 import (
 	"errors"
+	"os"
+	"strings"
 
 	"github.com/cloudtrust/keycloak-client/v2"
 	"gopkg.in/h2non/gentleman.v2/plugins/body"
@@ -9,9 +11,21 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	userPath                       = "/auth/admin/realms/:realm/users"
-	adminRootPath                  = "/auth/realms/:realmReq/api/admin"
+func init() {
+	var path = os.Getenv("KC_HTTP_RELATIVE_PATH")
+	if path == "" {
+		kcRootPath = "/auth"
+	} else if strings.HasPrefix(path, "/") {
+		kcRootPath = path
+	} else {
+		kcRootPath = ""
+	}
+}
+
+var (
+	kcRootPath                     string
+	userPath                       = GetKcRootPath() + "/admin/realms/:realm/users"
+	adminRootPath                  = GetKcRootPath() + "/realms/:realmReq/api/admin"
 	adminExtensionAPIPath          = adminRootPath + "/realms/:realm"
 	usersAdminExtensionAPIPath     = adminExtensionAPIPath + "/users"
 	sendEmailAdminExtensionAPIPath = adminExtensionAPIPath + "/send-email"
@@ -20,8 +34,8 @@ const (
 	userGroupsPath                 = userIDPath + "/groups"
 	userGroupIDPath                = userGroupsPath + "/:groupId"
 	executeActionsEmailPath        = usersAdminExtensionAPIPath + "/:id/execute-actions-email"
-	sendReminderEmailPath          = "/auth/realms/:realm/onboarding/sendReminderEmail"
-	smsAPI                         = "/auth/realms/:realm/smsApi"
+	sendReminderEmailPath          = GetKcRootPath() + "/realms/:realm/onboarding/sendReminderEmail"
+	smsAPI                         = GetKcRootPath() + "/realms/:realm/smsApi"
 	sendSmsCode                    = smsAPI + "/sendNewCode"
 	sendSmsConsentCode             = smsAPI + "/users/:userId/consent"
 	checkSmsConsentCode            = sendSmsConsentCode + "/:consent"
@@ -30,6 +44,10 @@ const (
 	expiredToUAcceptancePath       = adminRootPath + "/expired-tou-acceptance"
 	getSupportInfoPath             = adminRootPath + "/support-infos"
 )
+
+func GetKcRootPath() string {
+	return kcRootPath
+}
 
 // GetUsers returns a list of users, filtered according to the query parameters.
 // Parameters: email, first (paging offset, int), firstName, lastName, username,

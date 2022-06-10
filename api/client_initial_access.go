@@ -6,8 +6,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	clientInitialAccessPath = "/auth/admin/realms/:realm/clients-initial-access"
+var (
+	clientInitialAccessPath = GetKcRootPath() + "/admin/realms/:realm/clients-initial-access"
 )
 
 // CreateClientInitialAccess creates a new initial access token.

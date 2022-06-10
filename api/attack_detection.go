@@ -4,8 +4,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	attackDetectionPath   = "/auth/admin/realms/:realm/attack-detection/brute-force/users"
+var (
+	attackDetectionPath   = GetKcRootPath() + "/admin/realms/:realm/attack-detection/brute-force/users"
 	attackDetectionIDPath = attackDetectionPath + "/:id"
 )
 

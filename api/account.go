@@ -9,8 +9,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	accountExtensionAPIPath            = "/auth/realms/master/api/account/realms/:realm"
+var (
+	accountExtensionAPIPath            = GetKcRootPath() + "/realms/master/api/account/realms/:realm"
 	accountExecuteActionsEmail         = accountExtensionAPIPath + "/execute-actions-email"
 	accountSendEmail                   = accountExtensionAPIPath + "/send-email"
 	accountCredentialsPath             = accountExtensionAPIPath + "/credentials"

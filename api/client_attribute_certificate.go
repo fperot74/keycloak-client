@@ -8,8 +8,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	clientAttrCertPath = "/auth/admin/realms/:realm/clients/:id/certificates/:attr"
+var (
+	clientAttrCertPath = GetKcRootPath() + "/admin/realms/:realm/clients/:id/certificates/:attr"
 )
 
 // GetKeyInfo returns the key info. idClient is the id of client (not client-id).

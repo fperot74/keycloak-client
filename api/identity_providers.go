@@ -5,8 +5,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	idpsPath       = "/auth/admin/realms/:realm/identity-provider/instances"
+var (
+	idpsPath       = GetKcRootPath() + "/admin/realms/:realm/identity-provider/instances"
 	idpAliasPath   = idpsPath + "/:alias"
 	idpMappersPath = idpAliasPath + "/mappers"
 )

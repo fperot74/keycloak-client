@@ -8,7 +8,7 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
+var (
 	resetPasswordPath    = userIDPath + "/reset-password"
 	credentialsPath      = userIDPath + "/credentials"
 	credentialsTypesPath = realmPath + "/credentialTypes"
@@ -18,7 +18,7 @@ const (
 	moveAfterPath        = credentialIDPath + "/moveAfter/:previousCredentialID"
 	logoutPath           = userIDPath + "/logout"
 	// Paper card API
-	papercardPath               = "/auth/realms/:realm/papercard"
+	papercardPath               = GetKcRootPath() + "/realms/:realm/papercard"
 	resetFailuresPath           = papercardPath + "/users/:userId/credentials/:credentialId/resetFailures"
 	sendPaperCardsRemindersPath = papercardPath + "/expiryReminders"
 )

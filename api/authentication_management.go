@@ -6,8 +6,8 @@ import (
 	"gopkg.in/h2non/gentleman.v2/plugins/url"
 )
 
-const (
-	authenticationManagementPath      = "/auth/admin/realms/:realm/authentication"
+var (
+	authenticationManagementPath      = GetKcRootPath() + "/admin/realms/:realm/authentication"
 	authenticationConfigPath          = authenticationManagementPath + "/config/:id"
 	authenticationRequiredActionsPath = authenticationManagementPath + "/required-actions"
 	authenticationRequiredActionPath  = authenticationRequiredActionsPath + "/:alias"
